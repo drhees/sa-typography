@@ -20,7 +20,9 @@
             -webkit-font-smoothing: antialiased; /* 1 */
         }
         body {
-            line-height: 1.5; /* 2 */
+            font: 14px/1 $font-family; /* 2 */
+            text-rendering: optimizeLegibility;
+
         }
     }
 }
