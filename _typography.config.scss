@@ -1,0 +1,41 @@
+/**
+ * Header font stack
+ *
+ * @group typography
+ */
+$f-header-text: 'Lato', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif !default;
+
+/**
+ * Body text font stack
+ *
+ * @group typography
+ */
+$f-body-text: 'Lato', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif !default;
+
+
+/**
+ * Default font scale settings
+ * See font-scale.html and font-scale.png for visual representations
+ *
+ * @group typography
+ */
+
+$font-scale: (
+    header: (
+        1: (font-size: 14, line-height: 18),
+        2: (font-size: 16, line-height: 20),
+        3: (font-size: 20, line-height: 24),
+        4: (font-size: 24, line-height: 28),
+        5: (font-size: 28, line-height: 32),
+        6: (font-size: 32, line-height: 36),
+        7: (font-size: 36, line-height: 40),
+        8: (font-size: 40, line-height: 44),
+        9: (font-size: 44, line-height: 48),
+    ),
+    body: (
+        1: (font-size: 12, line-height: 18),
+        2: (font-size: 14, line-height: 20),
+        3: (font-size: 16, line-height: 22), //.lrg
+        4: (font-size: 18, line-height: 26), //.xlrg
+    ),
+) !default;

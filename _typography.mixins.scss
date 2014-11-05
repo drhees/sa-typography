@@ -1,0 +1,196 @@
+// Default type settings
+// =============================================================================
+
+/**
+ * Default typography settings, to be included as soon as possible in the HTML
+ * 1. Make type rendering look crisper
+ * 2. Set relative line spacing to 1.5 (16px * 1.5 = 24px)
+ *
+ * @param {String} $font-family ($f-text) - Default global font
+ *
+ * @requires {variable} $f-text
+ *
+ * @group typography
+ */
+@mixin guss-typography-defaults($font-family: $f-body-text) {
+    @at-root {
+        html {
+            font-family: $font-family;
+            -moz-osx-font-smoothing: grayscale; /* 1 */
+            -webkit-font-smoothing: antialiased; /* 1 */
+        }
+        body {
+            line-height: 1.5; /* 2 */
+        }
+    }
+}
+
+// Shorthands for font declarations
+// =============================================================================
+
+/**
+ * Font-size and line-height shorthand
+ *
+ * @param {Number} $size
+ * @param {Number} $line-height ($size)
+ *
+ * @example
+ *  @include font-size(18, 24);
+ *
+ * @requires {function} convert-to-px
+ *
+ * @group typography
+ */
+@mixin font-size($size, $line-height: $size) {
+    font-size: convert-to-px($size);
+    line-height: convert-to-px($line-height);
+}
+
+/**
+ * Font styling shorthand  
+ * Note: prefer the usage of the font-scale mixins to stick to the font scale
+ *
+ * @param {String} $family
+ * @param {String} $weight
+ * @param {Number} $size
+ * @param {Number} $line-height ($size)
+ *
+ * @example
+ *  @include font(arial, bold, 18, 24);
+ *
+ * @requires {mixin} font-size
+ *
+ * @group typography
+ */
+@mixin font($family, $weight, $size, $line-height: $size) {
+    font-family: $family;
+    font-weight: $weight;
+    @include font-size($size, $line-height);
+}
+
+
+// Font scale
+// =============================================================================
+
+// Prefixes:
+// f- stands for Font: use to set a font-family only
+// fs- for Font Scale: documented in font-scale.png
+
+/**
+ * Header family and weight properties.
+ *
+ * @requires {variable} $f-serif-headline
+ *
+ * @group typography
+ */
+@mixin f-header {
+    font-family: $f-header-text;
+    font-weight: 300;
+}
+
+/**
+ * Header typography settings.
+ *
+ * @param {Number} $level
+ * @param {Boolean} $size-only
+ *
+ * @example
+ *  // Output all properties (font-size, line-height, family, weight)
+ *  @include fs-header(3);
+ *  
+ *  // Output font-size and line-height only
+ *  @include fs-header(3, $size-only: true);
+ *
+ * @requires {function} get-font-size
+ * @requires {function} get-line-height
+ * @requires {mixin} font-size
+ * @requires {mixin} f-header
+ *
+ * @group typography
+ */
+@mixin fs-header($level, $size-only: false) {
+    @include font-size(get-font-size(header, $level), get-line-height(header, $level));
+
+    @if $size-only == false {
+        @include f-header;
+    }
+}
+
+/**
+ * Body Heading family and weight properties.
+ *
+ * @requires {variable} $f-serif-text
+ *
+ * @group typography
+ */
+@mixin f-bodyHeading {
+    font-family: $f-body-text;
+    font-weight: bold;
+}
+
+/**
+ * Body Heading typography settings.
+ *
+ * @param {Number} $level
+ * @param {Boolean} $size-only
+ *
+ * @example
+ *  // Output all properties (font-size, line-height, family, weight)
+ *  @include fs-bodyHeading(3);
+ *  
+ *  // Output font-size and line-height only
+ *  @include fs-bodyHeading(3, $size-only: true);
+ *
+ * @requires {function} get-font-size
+ * @requires {function} get-line-height
+ * @requires {mixin} font-size
+ * @requires {mixin} f-bodyHeading
+ *
+ * @group typography
+ */
+@mixin fs-bodyHeading($level, $size-only: false) {
+    @include font-size(get-font-size(header, $level), get-line-height(header, $level));
+
+    @if $size-only == false {
+        @include f-bodyHeading;
+    }
+}
+
+/**
+ * Body Copy family property.
+ *
+ * @requires {variable} $f-serif-text
+ *
+ * @group typography
+ */
+@mixin f-bodyText {
+    font-family: $f-body-text;
+}
+
+/**
+ * Body Copy typography settings.
+ *
+ * @param {Number} $level
+ * @param {Boolean} $size-only
+ *
+ * @example
+ *  // Output all properties (font-size, line-height, family)
+ *  @include fs-bodyText(3);
+ *  
+ *  // Output font-size and line-height only
+ *  @include fs-bodyText(3, $size-only: true);
+ *
+ * @requires {function} get-font-size
+ * @requires {function} get-line-height
+ * @requires {mixin} font-size
+ * @requires {mixin} f-bodyText
+ *
+ * @group typography
+ */
+@mixin fs-bodyText($level, $size-only: false) {
+    @include font-size(get-font-size(body, $level), get-line-height(body, $level));
+
+    @if $size-only == false {
+        @include f-bodyText;
+    }
+}
