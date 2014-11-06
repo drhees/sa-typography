@@ -4,7 +4,7 @@
 /**
  * Default typography settings, to be included as soon as possible in the HTML
  * 1. Make type rendering look crisper
- * 2. Set relative line spacing to 1.5 (16px * 1.5 = 24px)
+ * 2. Set relative line spacing to 14px.
  *
  * @param {String} $font-family ($f-text) - Default global font
  *
@@ -20,8 +20,8 @@
             -webkit-font-smoothing: antialiased; /* 1 */
         }
         body {
-            font: 14px/1 $font-family; /* 2 */
-            text-rendering: optimizeLegibility;
+            font: 13px/1.538461538 $font-family; /* 2 */
+            //text-rendering: optimizeLegibility;
 
         }
     }
